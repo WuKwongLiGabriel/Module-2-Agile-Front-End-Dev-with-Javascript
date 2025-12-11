@@ -1,3 +1,4 @@
+console.log("script running");
 // DOMContentLoaded is an event that triggers automatically when
 // all the DOM elements have been created
 document.addEventListener("DOMContentLoaded", function() {
@@ -11,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector("#book-id").value = '';
         document.querySelector("#title").value = '';
         document.querySelector("#author").value = '';
-        document.querySelector("#year").value = '';
+        document.querySelector("#pages").value = '';
         
         let formOverlay = document.querySelector("#book-form-overlay");
         formOverlay.classList.add('visible');
@@ -40,14 +41,14 @@ document.addEventListener("DOMContentLoaded", function() {
         let bookId = document.querySelector("#book-id").value;
         let title = document.querySelector("#title").value;
         let author = document.querySelector("#author").value;
-        let year = parseInt(document.querySelector("#year").value);
+        let pages = parseInt(document.querySelector("#pages").value);
         
         if (bookId) {
             // Update existing book
-            updateBook(books, parseInt(bookId), title, author, year);
+            updateBook(books, parseInt(bookId), title, author, pages);
         } else {
             // Add new book
-            addNewBook(books, title, author, year);
+            addNewBook(books, title, author, pages);
         }
         
         // Refresh the book list
@@ -84,7 +85,7 @@ function renderBooks(books) {
         bookItem.innerHTML = `
             <div class="book-info">
                 <h3 class="book-title">${book.title}</h3>
-                <p class="book-details">${book.author} - ${book.year}</p>
+                <p class="book-details">${book.author} - ${book.pages} pages</p>
             </div>
             <div class="book-actions">
                 <button class="edit-btn">Edit</button>
@@ -101,7 +102,7 @@ function renderBooks(books) {
             document.querySelector("#book-id").value = book.id;
             document.querySelector("#title").value = book.title;
             document.querySelector("#author").value = book.author;
-            document.querySelector("#year").value = book.year;
+            document.querySelector("#pages").value = book.pages;
             
             let formOverlay = document.querySelector("#book-form-overlay");
             formOverlay.classList.add("visible");

@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookstore Fenrir CRUD Database</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="container">
+    <div class="container">
         <header class="header">
             <h1>Bookstore Fenrir CRUD Database</h1>
             <button class="add-button" id="add-book-btn">Add Book</button>
@@ -15,29 +17,7 @@
 
         <main>
             <div class="book-list" id="book-list">
-                <!-- Sample book items -->
-                <div class="book-item">
-                    <div class="book-info">
-                        <span class="book-id">ID: 1</span>
-                        <h3 class="book-title">The Great Gatsby</h3>
-                        <p class="book-details">F. Scott Fitzgerald - 1925</p>
-                    </div>
-                    <div class="book-actions">
-                        <button class="edit-btn" data-book-id="1">Edit</button>
-                        <button class="delete-btn" data-book-id="1">Delete</button>
-                    </div>
-                </div>
-                <div class="book-item">
-                    <div class="book-info">
-                        <span class="book-id">ID: 2</span>
-                        <h3 class="book-title">To Kill a Mockingbird</h3>
-                        <p class="book-details">Harper Lee - 1960</p>
-                    </div>
-                    <div class="book-actions">
-                        <button class="edit-btn" data-book-id="2">Edit</button>
-                        <button class="delete-btn" data-book-id="2">Delete</button>
-                    </div>
-                </div>
+                <!-- Books will be loaded dynamically from JSONBin -->
             </div>
         </main>
 
@@ -59,8 +39,8 @@
                         <input type="text" id="author" name="author" required>
                     </div>
                     <div class="form-group">
-                        <label for="year">Publication Year</label>
-                        <input type="number" id="year" name="year" required>
+                        <label for="pages">Pages</label>
+                        <input type="number" id="pages" name="pages" required>
                     </div>
                     <button type="submit" class="submit-btn">Save Book</button>
                 </form>
@@ -68,8 +48,10 @@
         </div>
     </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="json_bin_key.js"></script>
     <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

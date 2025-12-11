@@ -1,67 +1,68 @@
-let books = [
-    {
-        "id": 1,
-        "title": "The Great Gatsby",
-        "author": "F. Scott Fitzgerald",
-        "year": 1925
-    },
-    {
-        "id": 2,
-        "title": "To Kill a Mockingbird",
-        "author": "Harper Lee",
-        "year": 1960
-    }
-];
+console.log("data.js is running");
 
-function addNewBook(books, title, author, year) {
-    if (title.length > 0 && author.length > 0 && year > 0) {
-        let newBook = {
-            "id": Math.floor(Math.random() * 9999) + 1,
-            "title": title,
-            "author": author,
-            "year": year
-        };
-        books.push(newBook);
-    } else {
-        throw "Invalid parameters";
+// Initialize books array - will be loaded from JSONBin
+let books = [];
+
+// Load data from JSONBin when page loads
+async function initializeData() {
+    books = await loadData();
+    if (!books || books.length === 0) {
+        books = [];
     }
+    renderBooks(books);
 }
 
-function updateBook(books, idToModify, newTitle, newAuthor, newYear) {
-    // Create a new book that will replace the original one
-    let modifiedBook = {
-        "id": idToModify,
-        "title": newTitle,
-        "author": newAuthor,
-        "year": newYear
+// Add a new book
+function addNewBook(books, title, author, pages) {
+    const newBook = {
+        "id": Math.floor(Math.random() * 10000 + 1),
+        "title": title,
+        "author": author,
+        "pages": pages
     };
+    books.push(newBook);
     
-    // Find the index of the book which we want to replace
-    let indexToModify = null;
+    // Save to JSONBin
+    saveData(books).then(() => {
+        console.log("Book added and saved to JSONBin");
+    });
+}
+
+// Update an existing book
+function updateBook(books, bookId, title, author, pages) {
     for (let i = 0; i < books.length; i++) {
-        if (books[i].id == idToModify) {
-            indexToModify = i;
-            break;
+        if (books[i].id === bookId) {
+            books[i].title = title;
+            books[i].author = author;
+            books[i].pages = pages;
+            
+            // Save to JSONBin
+            saveData(books).then(() => {
+                console.log("Book updated and saved to JSONBin");
+            });
+            return;
         }
-    }
-    
-    // If indexToModify is not null then we have found the index
-    if (indexToModify != null) {
-        books[indexToModify] = modifiedBook;
     }
 }
 
-function deleteBook(books, idToDelete) {
-    // Find the index of the book which we want to delete
-    let indexToDelete = null;
+// Delete a book
+function deleteBook(books, bookId) {
     for (let i = 0; i < books.length; i++) {
-        if (books[i].id == idToDelete) {
-            indexToDelete = i;
-            break;
+        if (books[i].id === bookId) {
+            books.splice(i, 1);
+            
+            // Save to JSONBin
+            saveData(books).then(() => {
+                console.log("Book deleted and saved to JSONBin");
+            });
+            return;
         }
     }
-    
-    if (indexToDelete != null) {
-        books.splice(indexToDelete, 1);
-    }
+}
+
+// Call initialization when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeData);
+} else {
+    initializeData();
 }
