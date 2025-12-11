@@ -1,3 +1,4 @@
+//To show in inspector that script is running
 console.log("data.js is running");
 
 // Initialize books array - will be loaded from JSONBin

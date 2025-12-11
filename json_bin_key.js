@@ -1,5 +1,5 @@
-//Test if Key is running
-console.log("JSON key is running😀");
+//To show in inspector that script is running
+console.log("JSON key is running");
 
 const JSON_BIN_BASE_URL = "https://api.jsonbin.io/v3";
 const JSON_BIN_ID = "69391b27ae596e708f8f9097";
@@ -10,7 +10,7 @@ async function loadData() {
         const config = {
             "headers": {
                 "Content-Type": "application/json",
-                "X-Master-Key": MASTER_KEY
+                "X-Access-Key": MASTER_KEY
             }
         }
         const response = await axios.get(`${JSON_BIN_BASE_URL}/b/${JSON_BIN_ID}/latest`, config);
@@ -28,7 +28,7 @@ async function saveData(books) {
         const config = {
             "headers": {
                 "Content-Type": "application/json",
-                "X-Master-Key": MASTER_KEY
+                "X-Access-Key": MASTER_KEY
             }
         }
         //axios.put has three parameters:

@@ -1,3 +1,4 @@
+//To show in inspector that script is running
 console.log("script running");
 // DOMContentLoaded is an event that triggers automatically when
 // all the DOM elements have been created
