@@ -3,7 +3,7 @@ console.log("JSON key is running😀");
 
 const JSON_BIN_BASE_URL = "https://api.jsonbin.io/v3";
 const JSON_BIN_ID = "69391b27ae596e708f8f9097";
-const MASTER_KEY = "$2a$10$s1ukTbImJTRdlQLXUmP/9e13uwFJwI6AWybu69zYpHHFKW8CV82ZO";
+const MASTER_KEY = "$2a$10$fd9mG4IjKfA93LTFEPh44utx./t7SR0oN94tYGWe/Yc7Qq33bjdPm";
 
 async function loadData() {
     try {
